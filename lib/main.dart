@@ -27,7 +27,7 @@ class CalculatorApp extends StatelessWidget {
 class CalculatorScreen extends StatelessWidget {
   const CalculatorScreen({super.key});
 
-  // === COMMIT 9: Mejorar estilo base de los botones ===
+  // === Botón base (Commit 8 + 9) ===
   Widget _buildButton(String label) {
     return Container(
       decoration: BoxDecoration(
@@ -36,8 +36,8 @@ class CalculatorScreen extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.5), // Sombra suave
-            blurRadius: 8, // Difusión de sombra
-            offset: const Offset(0, 4), // Dirección de la sombra
+            blurRadius: 8, // Difusión
+            offset: const Offset(0, 4), // Dirección sombra
           ),
         ],
       ),
@@ -45,8 +45,8 @@ class CalculatorScreen extends StatelessWidget {
         child: Text(
           label, // Texto del botón
           style: const TextStyle(
-            fontSize: 24, // Tamaño del texto
-            fontWeight: FontWeight.bold, // Negrita
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
             color: Colors.white, // Texto blanco
           ),
         ),
@@ -99,6 +99,22 @@ class CalculatorScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+              ),
+
+              const SizedBox(height: 32), // Espacio entre display y keypad
+
+              // === COMMIT 10: GridView con 4 columnas ===
+              GridView.count(
+                crossAxisCount: 4, // Número de columnas
+                crossAxisSpacing: 12, // Espacio horizontal
+                mainAxisSpacing: 12, // Espacio vertical
+                shrinkWrap: true, // Ajusta GridView al contenido
+                children: [
+                  _buildButton("1"),
+                  _buildButton("2"),
+                  _buildButton("3"),
+                  _buildButton("4"),
+                ],
               ),
             ],
           ),
