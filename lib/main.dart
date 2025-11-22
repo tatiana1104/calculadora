@@ -26,8 +26,12 @@ class CalculatorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text('Calculadora'),
+      backgroundColor: const Color(0xFF1A1A1A), // Fondo oscuro
+      body: const SafeArea(
+        child: Center(
+          child: Text('Calculadora', style: TextStyle(fontSize: 22),
+          ),
+        )
       ),
     );
   }
