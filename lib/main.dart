@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // Punto de entrada de la app
 void main() {
-  runApp(const CalculatorApp());
+  runApp(const CalculatorApp()); // inicia la app
 }
 
 // Widget raíz de la app
@@ -12,13 +12,13 @@ class CalculatorApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false, //bandera de debug
+      debugShowCheckedModeBanner: false,
       title: 'Calculadora',
       theme: ThemeData(
-        brightness: Brightness.dark, // Tema oscuro
+        brightness: Brightness.dark, // tema oscuro
         useMaterial3: true,
       ),
-      home: const CalculatorScreen(), // Pantalla principal
+      home: const CalculatorScreen(), // pantalla principal
     );
   }
 }
@@ -27,31 +27,27 @@ class CalculatorApp extends StatelessWidget {
 class CalculatorScreen extends StatelessWidget {
   const CalculatorScreen({super.key});
 
-  // Método reutilizable para crear botones
-  Widget _buildButton({
-    required String label, // Texto del botón
-    required Color color, // Fondo del botón
-    required Color textColor, // Color del texto
-  }) {
+  // Método para crear botones reutilizables
+  Widget _buildButton(String text, Color backgroundColor, Color textColor) {
     return Container(
       decoration: BoxDecoration(
-        color: color, // Color de fondo
-        borderRadius: BorderRadius.circular(12), // Bordes redondeados
+        color: backgroundColor, // color de fondo
+        borderRadius: BorderRadius.circular(12), // bordes redondeados
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.4), // Sombra
+            color: Colors.black.withOpacity(0.4), // sombra negra
             blurRadius: 8,
-            offset: const Offset(0, 4),
+            offset: const Offset(0, 4), // desplazamiento
           ),
         ],
       ),
       child: Center(
         child: Text(
-          label, // Texto del botón
+          text,
           style: TextStyle(
-            fontSize: 24, // Tamaño de texto
-            fontWeight: FontWeight.bold, // Negrita
-            color: textColor, // Color del texto
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: textColor,
           ),
         ),
       ),
@@ -61,22 +57,23 @@ class CalculatorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1A1A1A), // Fondo general
+      backgroundColor: const Color(0xFF1A1A1A), // fondo principal
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(16.0), // Padding general
+          padding: const EdgeInsets.all(16.0), // padding general (commit 16)
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center, // centrado vertical (commit 16)
             children: [
-              // === Display principal ===
+              // === Display ===
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(24),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF2A2A2A),
+                  color: const Color(0xFF2A2A2A), // fondo gris oscuro
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.5),
+                      color: Colors.black.withOpacity(0.5), // sombra
                       blurRadius: 12,
                       offset: const Offset(0, 8),
                     ),
@@ -86,15 +83,15 @@ class CalculatorScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: const [
                     Text(
-                      "12 +",
+                      "12 +", // operación anterior
                       style: TextStyle(
                         fontSize: 18,
-                        color: Color(0xFFD4AF37), // Dorado
+                        color: Color(0xFFD4AF37), // dorado
                       ),
                     ),
                     SizedBox(height: 8),
                     Text(
-                      "0",
+                      "0", // valor principal
                       style: TextStyle(
                         fontSize: 48,
                         fontWeight: FontWeight.bold,
@@ -105,47 +102,44 @@ class CalculatorScreen extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 20), // Espacio entre display y botones
+              const SizedBox(height: 32), // <-- Ajuste de spacing vertical (commit 16)
 
-              // === GRID DE BOTONES ===
+              // === Grid de botones ===
               Expanded(
                 child: GridView.count(
-                  crossAxisCount: 4, // 4 columnas
+                  crossAxisCount: 4,
                   crossAxisSpacing: 12,
                   mainAxisSpacing: 12,
-                  shrinkWrap: true,
-
                   children: [
-                    // --- FILA 1 ---
-                    _buildButton(label: "C", color: const Color(0xFFE74C3C), textColor: Colors.white),
-                    _buildButton(label: "←", color: const Color(0xFF3498DB), textColor: Colors.white),
-                    _buildButton(label: "÷", color: const Color(0xFFD4AF37), textColor: Colors.black),
-                    _buildButton(label: "×", color: const Color(0xFFD4AF37), textColor: Colors.black),
+                    // Fila 1
+                    _buildButton("C", const Color(0xFFE74C3C), Colors.white),
+                    _buildButton("←", const Color(0xFF3498DB), Colors.white),
+                    _buildButton("÷", const Color(0xFFD4AF37), Colors.black),
+                    _buildButton("×", const Color(0xFFD4AF37), Colors.black),
 
-                    // --- FILA 2 ---
-                    _buildButton(label: "7", color: const Color(0xFF2A2A2A), textColor: Colors.white),
-                    _buildButton(label: "8", color: const Color(0xFF2A2A2A), textColor: Colors.white),
-                    _buildButton(label: "9", color: const Color(0xFF2A2A2A), textColor: Colors.white),
-                    _buildButton(label: "-", color: const Color(0xFFD4AF37), textColor: Colors.black),
+                    // Fila 2
+                    _buildButton("7", const Color(0xFF2A2A2A), Colors.white),
+                    _buildButton("8", const Color(0xFF2A2A2A), Colors.white),
+                    _buildButton("9", const Color(0xFF2A2A2A), Colors.white),
+                    _buildButton("-", const Color(0xFFD4AF37), Colors.black),
 
-                    // --- FILA 3 (COMMIT 13) ---
-                    _buildButton(label: "4", color: const Color(0xFF2A2A2A), textColor: Colors.white),
-                    _buildButton(label: "5", color: const Color(0xFF2A2A2A), textColor: Colors.white),
-                    _buildButton(label: "6", color: const Color(0xFF2A2A2A), textColor: Colors.white),
-                    _buildButton(label: "+", color: const Color(0xFFD4AF37), textColor: Colors.black),
-                    
-                    // --- FILA 4 (COMMIT 14) ---
-                    _buildButton(label: "1", color: const Color(0xFF2A2A2A), textColor: Colors.white),
-                    _buildButton(label: "2", color: const Color(0xFF2A2A2A), textColor: Colors.white),
-                    _buildButton(label: "3", color: const Color(0xFF2A2A2A), textColor: Colors.white),
-                    _buildButton(label: "=", color: const Color(0xFF27AE60), textColor: Colors.white),
-                    
-                    // --- FILA 5 (COMMIT 15) ---
-                    _buildButton(label: "0", color: const Color(0xFF2A2A2A), textColor: Colors.white),
-                    _buildButton(label: ".", color: const Color(0xFF2A2A2A), textColor: Colors.white),
-                    _buildButton(label: "", color: const Color(0xFF2A2A2A), textColor: Colors.white), // Botón vacío
-                    _buildButton(label: "", color: const Color(0xFF2A2A2A), textColor: Colors.white), // Otro vacío opcional
+                    // Fila 3
+                    _buildButton("4", const Color(0xFF2A2A2A), Colors.white),
+                    _buildButton("5", const Color(0xFF2A2A2A), Colors.white),
+                    _buildButton("6", const Color(0xFF2A2A2A), Colors.white),
+                    _buildButton("+", const Color(0xFFD4AF37), Colors.black),
 
+                    // Fila 4
+                    _buildButton("1", const Color(0xFF2A2A2A), Colors.white),
+                    _buildButton("2", const Color(0xFF2A2A2A), Colors.white),
+                    _buildButton("3", const Color(0xFF2A2A2A), Colors.white),
+                    _buildButton("=", const Color(0xFF27AE60), Colors.white),
+
+                    // Fila 5
+                    _buildButton("0", const Color(0xFF2A2A2A), Colors.white),
+                    _buildButton(".", const Color(0xFF2A2A2A), Colors.white),
+                    _buildButton("", const Color(0xFF2A2A2A), Colors.white),
+                    _buildButton("", const Color(0xFF2A2A2A), Colors.white),
                   ],
                 ),
               ),
