@@ -28,13 +28,13 @@ class CalculatorScreen extends StatelessWidget {
   Widget _buildButton(String text, Color backgroundColor, Color textColor) {
     return Container(
       decoration: BoxDecoration(
-        color: backgroundColor, // fondo del botón
+        color: backgroundColor, // color del botón
         borderRadius: BorderRadius.circular(12), // bordes redondeados
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.5), // sombra negra con opacidad
+            color: Colors.black.withOpacity(0.5), // sombra negra
             blurRadius: 8, // suavizado sombra
-            offset: const Offset(0, 4), // desplazamiento vertical
+            offset: const Offset(0, 4), // desplazamiento sombra
           ),
         ],
       ),
@@ -43,8 +43,8 @@ class CalculatorScreen extends StatelessWidget {
           text,
           style: TextStyle(
             fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: textColor, // color del texto
+            fontWeight: FontWeight.bold, // commit 19: bold en botones
+            color: textColor,
           ),
         ),
       ),
@@ -57,7 +57,7 @@ class CalculatorScreen extends StatelessWidget {
       backgroundColor: const Color(0xFF1A1A1A), // fondo general
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0), // padding general
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -84,6 +84,7 @@ class CalculatorScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 18,
                         color: Color(0xFFD4AF37),
+                        overflow: TextOverflow.ellipsis, // commit 19: evita overflow
                       ),
                     ),
                     SizedBox(height: 8),
@@ -93,6 +94,7 @@ class CalculatorScreen extends StatelessWidget {
                         fontSize: 48,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
+                        overflow: TextOverflow.ellipsis, // commit 19: evita overflow
                       ),
                     ),
                   ],
@@ -101,7 +103,7 @@ class CalculatorScreen extends StatelessWidget {
 
               const SizedBox(height: 32), // spacing vertical
 
-              // === Grid de botones con BoxShadow agregado ===
+              // === Grid de botones ===
               Expanded(
                 child: GridView.count(
                   crossAxisCount: 4,
