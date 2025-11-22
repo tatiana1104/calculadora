@@ -133,6 +133,13 @@ class CalculatorScreen extends StatelessWidget {
                     _buildButton(label: "5", color: const Color(0xFF2A2A2A), textColor: Colors.white),
                     _buildButton(label: "6", color: const Color(0xFF2A2A2A), textColor: Colors.white),
                     _buildButton(label: "+", color: const Color(0xFFD4AF37), textColor: Colors.black),
+                    
+                    // --- FILA 4 (COMMIT 14) ---
+                    _buildButton(label: "1", color: const Color(0xFF2A2A2A), textColor: Colors.white),
+                    _buildButton(label: "2", color: const Color(0xFF2A2A2A), textColor: Colors.white),
+                    _buildButton(label: "3", color: const Color(0xFF2A2A2A), textColor: Colors.white),
+                    _buildButton(label: "=", color: const Color(0xFF27AE60), textColor: Colors.white),
+                  
                   ],
                 ),
               ),
