@@ -5,7 +5,7 @@ void main() {
   runApp(const CalculatorApp());
 }
 
-// Widget raíz
+// Widget raíz de la app
 class CalculatorApp extends StatelessWidget {
   const CalculatorApp({super.key});
 
@@ -18,27 +18,28 @@ class CalculatorApp extends StatelessWidget {
         brightness: Brightness.dark, // Tema oscuro
         useMaterial3: true,
       ),
-      home: const CalculatorScreen(),
+      home: const CalculatorScreen(), // Pantalla principal
     );
   }
 }
 
+// Pantalla principal
 class CalculatorScreen extends StatelessWidget {
   const CalculatorScreen({super.key});
 
-  // Widget reutilizable para botones
-  Widget _buildButton(
-    String label, {
-    Color? backgroundColor,
-    Color? textColor,
+  // Método reutilizable para crear botones
+  Widget _buildButton({
+    required String label, // Texto del botón
+    required Color color, // Fondo del botón
+    required Color textColor, // Color del texto
   }) {
     return Container(
       decoration: BoxDecoration(
-        color: backgroundColor ?? const Color(0xFF2A2A2A), // Gris por defecto
-        borderRadius: BorderRadius.circular(12),
+        color: color, // Color de fondo
+        borderRadius: BorderRadius.circular(12), // Bordes redondeados
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.5),
+            color: Colors.black.withOpacity(0.4), // Sombra
             blurRadius: 8,
             offset: const Offset(0, 4),
           ),
@@ -46,11 +47,11 @@ class CalculatorScreen extends StatelessWidget {
       ),
       child: Center(
         child: Text(
-          label,
+          label, // Texto del botón
           style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: textColor ?? Colors.white, // Texto blanco por defecto
+            fontSize: 24, // Tamaño de texto
+            fontWeight: FontWeight.bold, // Negrita
+            color: textColor, // Color del texto
           ),
         ),
       ),
@@ -66,7 +67,7 @@ class CalculatorScreen extends StatelessWidget {
           padding: const EdgeInsets.all(16.0), // Padding general
           child: Column(
             children: [
-              // Display
+              // === Display principal ===
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(24),
@@ -88,7 +89,7 @@ class CalculatorScreen extends StatelessWidget {
                       "12 +",
                       style: TextStyle(
                         fontSize: 18,
-                        color: Color(0xFFD4AF37),
+                        color: Color(0xFFD4AF37), // Dorado
                       ),
                     ),
                     SizedBox(height: 8),
@@ -104,37 +105,36 @@ class CalculatorScreen extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 32),
+              const SizedBox(height: 20), // Espacio entre display y botones
 
-              // Teclado
-              GridView.count(
-                crossAxisCount: 4,
-                crossAxisSpacing: 12,
-                mainAxisSpacing: 12,
-                shrinkWrap: true,
-                children: [
-                  // ====== Fila 1 (Commit 11) ======
-                  _buildButton("C",
-                      backgroundColor: const Color(0xFFE74C3C),
-                      textColor: Colors.white),
-                  _buildButton("←",
-                      backgroundColor: const Color(0xFF3498DB),
-                      textColor: Colors.white),
-                  _buildButton("÷",
-                      backgroundColor: const Color(0xFFD4AF37),
-                      textColor: Colors.black),
-                  _buildButton("×",
-                      backgroundColor: const Color(0xFFD4AF37),
-                      textColor: Colors.black),
+              // === GRID DE BOTONES ===
+              Expanded(
+                child: GridView.count(
+                  crossAxisCount: 4, // 4 columnas
+                  crossAxisSpacing: 12,
+                  mainAxisSpacing: 12,
+                  shrinkWrap: true,
 
-                  // ====== Fila 2 (Commit 12) ======
-                  _buildButton("7"), // Gris por defecto
-                  _buildButton("8"),
-                  _buildButton("9"),
-                  _buildButton("-",
-                      backgroundColor: const Color(0xFFD4AF37),
-                      textColor: Colors.black), // Operador dorado
-                ],
+                  children: [
+                    // --- FILA 1 ---
+                    _buildButton(label: "C", color: const Color(0xFFE74C3C), textColor: Colors.white),
+                    _buildButton(label: "←", color: const Color(0xFF3498DB), textColor: Colors.white),
+                    _buildButton(label: "÷", color: const Color(0xFFD4AF37), textColor: Colors.black),
+                    _buildButton(label: "×", color: const Color(0xFFD4AF37), textColor: Colors.black),
+
+                    // --- FILA 2 ---
+                    _buildButton(label: "7", color: const Color(0xFF2A2A2A), textColor: Colors.white),
+                    _buildButton(label: "8", color: const Color(0xFF2A2A2A), textColor: Colors.white),
+                    _buildButton(label: "9", color: const Color(0xFF2A2A2A), textColor: Colors.white),
+                    _buildButton(label: "-", color: const Color(0xFFD4AF37), textColor: Colors.black),
+
+                    // --- FILA 3 (COMMIT 13) ---
+                    _buildButton(label: "4", color: const Color(0xFF2A2A2A), textColor: Colors.white),
+                    _buildButton(label: "5", color: const Color(0xFF2A2A2A), textColor: Colors.white),
+                    _buildButton(label: "6", color: const Color(0xFF2A2A2A), textColor: Colors.white),
+                    _buildButton(label: "+", color: const Color(0xFFD4AF37), textColor: Colors.black),
+                  ],
+                ),
               ),
             ],
           ),
