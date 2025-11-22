@@ -18,7 +18,7 @@ class CalculatorApp extends StatelessWidget {
         brightness: Brightness.dark, // Tema oscuro
         useMaterial3: true,
       ),
-      home: const CalculatorScreen(),
+      home: const CalculatorScreen(), // Pantalla principal
     );
   }
 }
@@ -27,20 +27,27 @@ class CalculatorApp extends StatelessWidget {
 class CalculatorScreen extends StatelessWidget {
   const CalculatorScreen({super.key});
 
-  // === Método reutilizable para crear botones (Commit 8) ===
-  Widget _buildButton(String label, {Color? backgroundColor, Color? textColor}) {
+  // === COMMIT 9: Mejorar estilo base de los botones ===
+  Widget _buildButton(String label) {
     return Container(
       decoration: BoxDecoration(
-        color: backgroundColor ?? const Color(0xFF2A2A2A), // Fondo por defecto
-        borderRadius: BorderRadius.circular(12), // Botones redondeados
+        color: const Color(0xFF2A2A2A), // Fondo gris base del botón
+        borderRadius: BorderRadius.circular(12), // Esquinas redondeadas
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.5), // Sombra suave
+            blurRadius: 8, // Difusión de sombra
+            offset: const Offset(0, 4), // Dirección de la sombra
+          ),
+        ],
       ),
       child: Center(
         child: Text(
-          label,
-          style: TextStyle(
+          label, // Texto del botón
+          style: const TextStyle(
             fontSize: 24, // Tamaño del texto
             fontWeight: FontWeight.bold, // Negrita
-            color: textColor ?? Colors.white, // Texto blanco por defecto
+            color: Colors.white, // Texto blanco
           ),
         ),
       ),
@@ -53,7 +60,7 @@ class CalculatorScreen extends StatelessWidget {
       backgroundColor: const Color(0xFF1A1A1A), // Fondo general
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0), // Padding general
           child: Column(
             children: [
               // === Display principal ===
