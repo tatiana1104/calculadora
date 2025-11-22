@@ -23,55 +23,71 @@ class CalculatorApp extends StatelessWidget {
   }
 }
 
-// Pantalla principal de la calculadora
+// Pantalla principal
 class CalculatorScreen extends StatelessWidget {
   const CalculatorScreen({super.key});
+
+  // === Método reutilizable para crear botones (Commit 8) ===
+  Widget _buildButton(String label, {Color? backgroundColor, Color? textColor}) {
+    return Container(
+      decoration: BoxDecoration(
+        color: backgroundColor ?? const Color(0xFF2A2A2A), // Fondo por defecto
+        borderRadius: BorderRadius.circular(12), // Botones redondeados
+      ),
+      child: Center(
+        child: Text(
+          label,
+          style: TextStyle(
+            fontSize: 24, // Tamaño del texto
+            fontWeight: FontWeight.bold, // Negrita
+            color: textColor ?? Colors.white, // Texto blanco por defecto
+          ),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1A1A1A), // Fondo oscuro general
+      backgroundColor: const Color(0xFF1A1A1A), // Fondo general
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(16.0), // Padding externo
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              // === Display completo (Commit 7) ===
+              // === Display principal ===
               Container(
                 width: double.infinity,
-                padding: const EdgeInsets.all(24), // Padding interno
+                padding: const EdgeInsets.all(24),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF2A2A2A), // Fondo del display
-                  borderRadius: BorderRadius.circular(16), // Bordes redondeados
+                  color: const Color(0xFF2A2A2A),
+                  borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.5), // Sombra marcada
+                      color: Colors.black.withOpacity(0.5),
                       blurRadius: 12,
                       offset: const Offset(0, 8),
                     ),
                   ],
                 ),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end, // Alineación derecha
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: const [
-                    // === Texto de la operación anterior ===
                     Text(
-                      "12 +", // Temporal
+                      "12 +",
                       style: TextStyle(
                         fontSize: 18,
-                        color: Color(0xFFD4AF37), // Dorado
+                        color: Color(0xFFD4AF37),
                       ),
                     ),
-
-                    SizedBox(height: 8), // Separación entre textos
-
-                    // === Texto principal del número ===
+                    SizedBox(height: 8),
                     Text(
-                      "0", // Temporal
+                      "0",
                       style: TextStyle(
-                        fontSize: 48, // Tamaño grande
-                        fontWeight: FontWeight.bold, // Negrita
-                        color: Colors.white, // Blanco
+                        fontSize: 48,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
                       ),
                     ),
                   ],
