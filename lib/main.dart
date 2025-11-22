@@ -13,7 +13,7 @@ class CalculatorApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Calculadora',
       theme: ThemeData(
-        brightness: Brightness.dark, // tema oscuro
+        brightness: Brightness.dark,
         useMaterial3: true,
       ),
       home: const CalculatorScreen(),
@@ -28,13 +28,13 @@ class CalculatorScreen extends StatelessWidget {
   Widget _buildButton(String text, Color backgroundColor, Color textColor) {
     return Container(
       decoration: BoxDecoration(
-        color: backgroundColor, // color del botón
+        color: backgroundColor, // fondo del botón
         borderRadius: BorderRadius.circular(12), // bordes redondeados
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.4), // sombra negra
-            blurRadius: 8,
-            offset: const Offset(0, 4), // desplazamiento sombra
+            color: Colors.black.withOpacity(0.5), // sombra negra con opacidad
+            blurRadius: 8, // suavizado sombra
+            offset: const Offset(0, 4), // desplazamiento vertical
           ),
         ],
       ),
@@ -54,12 +54,12 @@ class CalculatorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1A1A1A), // fondo general (commit 17)
+      backgroundColor: const Color(0xFF1A1A1A), // fondo general
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(16.0), // padding general
+          padding: const EdgeInsets.all(16.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center, // centrado vertical
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // === Display ===
               Container(
@@ -83,7 +83,7 @@ class CalculatorScreen extends StatelessWidget {
                       "12 +", // operación anterior
                       style: TextStyle(
                         fontSize: 18,
-                        color: Color(0xFFD4AF37), // dorado operadores
+                        color: Color(0xFFD4AF37),
                       ),
                     ),
                     SizedBox(height: 8),
@@ -99,9 +99,9 @@ class CalculatorScreen extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 32), // espacio vertical entre display y botones
+              const SizedBox(height: 32), // spacing vertical
 
-              // === Grid de botones con colores optimizados ===
+              // === Grid de botones con BoxShadow agregado ===
               Expanded(
                 child: GridView.count(
                   crossAxisCount: 4,
@@ -109,9 +109,9 @@ class CalculatorScreen extends StatelessWidget {
                   mainAxisSpacing: 12,
                   children: [
                     // Fila 1: C, ←, ÷, ×
-                    _buildButton("C", const Color(0xFFE74C3C), Colors.white), // rojo especial
-                    _buildButton("←", const Color(0xFF3498DB), Colors.white),   // azul especial
-                    _buildButton("÷", const Color(0xFFD4AF37), Colors.black),   // operador dorado
+                    _buildButton("C", const Color(0xFFE74C3C), Colors.white),
+                    _buildButton("←", const Color(0xFF3498DB), Colors.white),
+                    _buildButton("÷", const Color(0xFFD4AF37), Colors.black),
                     _buildButton("×", const Color(0xFFD4AF37), Colors.black),
 
                     // Fila 2: 7, 8, 9, -
@@ -130,7 +130,7 @@ class CalculatorScreen extends StatelessWidget {
                     _buildButton("1", const Color(0xFF2A2A2A), Colors.white),
                     _buildButton("2", const Color(0xFF2A2A2A), Colors.white),
                     _buildButton("3", const Color(0xFF2A2A2A), Colors.white),
-                    _buildButton("=", const Color(0xFF27AE60), Colors.white), // verde especial
+                    _buildButton("=", const Color(0xFF27AE60), Colors.white),
 
                     // Fila 5: 0, ., (relleno)
                     _buildButton("0", const Color(0xFF2A2A2A), Colors.white),
