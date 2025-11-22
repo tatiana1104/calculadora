@@ -35,18 +35,17 @@ class CalculatorScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16.0), // Padding externo
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end, // Alinear textos a la derecha
             children: [
-              // === Display (Commit 6) ===
+              // === Display completo (Commit 7) ===
               Container(
                 width: double.infinity,
-                padding: const EdgeInsets.all(24),
+                padding: const EdgeInsets.all(24), // Padding interno
                 decoration: BoxDecoration(
                   color: const Color(0xFF2A2A2A), // Fondo del display
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(16), // Bordes redondeados
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.5), // Sombra
+                      color: Colors.black.withOpacity(0.5), // Sombra marcada
                       blurRadius: 12,
                       offset: const Offset(0, 8),
                     ),
@@ -55,12 +54,24 @@ class CalculatorScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end, // Alineación derecha
                   children: const [
-                    // === Texto de operación anterior ===
+                    // === Texto de la operación anterior ===
                     Text(
-                      "12 +", // Texto temporal
+                      "12 +", // Temporal
                       style: TextStyle(
-                        fontSize: 18, // Tamaño pequeño
+                        fontSize: 18,
                         color: Color(0xFFD4AF37), // Dorado
+                      ),
+                    ),
+
+                    SizedBox(height: 8), // Separación entre textos
+
+                    // === Texto principal del número ===
+                    Text(
+                      "0", // Temporal
+                      style: TextStyle(
+                        fontSize: 48, // Tamaño grande
+                        fontWeight: FontWeight.bold, // Negrita
+                        color: Colors.white, // Blanco
                       ),
                     ),
                   ],
