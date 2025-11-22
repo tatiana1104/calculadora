@@ -37,16 +37,29 @@ class CalculatorScreen extends StatelessWidget {
                 width: double.infinity, // Ocupar todo el ancho disponible
                 child: DecoratedBox(
                   decoration: BoxDecoration(
-                    color: Colors.grey, // Color temporal (se ajusta en commit 5)
+                    color: Color(0xFF2A2A2A), // Fondo gris oscuro del display
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(16), // Bordes redondeados
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black54, // Sombra negra suave
+                        blurRadius: 12,        // Difuminado de la sombra
+                        offset: Offset(0, 8),  // Posición de la sombra
+                      ),
+                    ],
                   ),
+
+                  // Espacio interno del display
                   child: Padding(
-                    padding: EdgeInsets.all(24.0), // Espacio interno del display
+                    padding: EdgeInsets.all(24.0),
                     child: SizedBox(
-                      height: 80, // Altura del área donde irá el texto
+                      height: 80, // Altura donde luego irá el texto
                     ),
                   ),
                 ),
               ),
+
             ],
           ),
         ),
