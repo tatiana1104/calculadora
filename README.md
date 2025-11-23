@@ -1,16 +1,35 @@
-# calculadora
+# Calculadora en Flutter
 
-A new Flutter project.
+Aplicación móvil desarrollada en **Flutter**, que implementa el diseño
+visual de una calculadora moderna con estilo oscuro. Incluye una
+interfaz elegante, botones personalizados, sombras y una estructura
+lista para integrar lógica funcional.
 
-## Getting Started
+------------------------------------------------------------------------
 
-This project is a starting point for a Flutter application.
+## ✨ Funcionalidades
 
-A few resources to get you started if this is your first Flutter project:
+-   UI completa con display superior\
+-   Botones personalizados con sombras\
+-   Grid responsivo\
+-   Diseño **dark mode**\
+-   Arquitectura lista para implementar la lógica de operaciones
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+------------------------------------------------------------------------
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🚀 Cómo ejecutar el proyecto
+
+1.  Asegúrate de tener Flutter instalado\
+2.  Ejecuta:
+
+``` bash
+flutter pub get
+flutter run
+```
+
+------------------------------------------------------------------------
+
+## 👩‍💻 Autora
+
+**J. Tatiana Vargas**\
+Ingeniera de Sistemas --- Programadora
